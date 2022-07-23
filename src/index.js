@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Homepage from './components/Homepage';
 import Product from './components/Product';
 import ProductDetails from './components/ProductDetails';
+import ShoppingCart from './components/ShoppingCart';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
           <Route path="products" element={<Product />}>
             <Route path=":productId" element={<ProductDetails />}/>
           </Route>
+          <Route path="cart" element={<ShoppingCart />}/>
         </Route>
       </Routes>
     </BrowserRouter>
