@@ -5,7 +5,7 @@ export default function HeaderFooter(props) {
   return(
     <>
       <Header />
-      <div>{props.children}</div>
+      <>{props.children}</>
       <Footer />
     </>
   )

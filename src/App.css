@@ -51,12 +51,14 @@
 }
 
 .app-container {
-  height: 100vh;
-  max-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
+  min-width: 100%;
+  max-width: 100%;
 }
 
 .categoryLink, .headerLinks {
@@ -67,15 +69,49 @@
 .header {
   display: flex;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
   background-color: bisque;
-  height: 5vh;
+  min-height: 5vh;
   align-items: center;
 }
+
+.footer
 
 .headerSub {
   display: flex;
   gap: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
+}
+
+.headerLinks {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.productCard {
+  width: 75vw;
+  max-width: 75vw;
+  height: 10vw;
+  max-height: 10vw;
+  display: flex;
+}
+
+.productsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.productImage {
+  width: auto;
+  height: 80%;
+}
+
+.productCardLeft {
+  height: 80%;
+}
+
+.productCardRight {
+  display: flex;
+  flex-direction: column;
 }

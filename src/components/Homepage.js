@@ -1,17 +1,33 @@
 import CategoryCard from "./CategoryCard"
+import { useState, useEffect } from "react";
 
 export default function Homepage() {
-  const categories = [
-    "All",
-    "Tech",
-    "Games",
-    "Clothing",
-    "Outdoor"
-  ]
+  const [categories, setCategories] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products/categories")
+          .then(res => res.json())
+          .then(data => {
+            setCategories(data);
+            console.log(data);
+            setIsLoading(false);
+          });
+  }, [])
 
   return (
-    <div className="categoriesContainer">
-      {categories.map((category) => <CategoryCard category={category} key={category}/>)}
-    </div>
+    <>
+      {!isLoading ? (
+        <div className="categoriesContainer">
+          {categories.map((category) => <CategoryCard category={category} key={category}/>)}
+        </div>
+      ) : (
+        <>
+          <div className="categoriesContainer">
+            <p>Loading...</p>
+          </div>
+        </>
+      )}
+    </>
   )
 }
