@@ -4,9 +4,11 @@ import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <HeaderFooter>
-      <Outlet />
-    </HeaderFooter>
+    <div className='app-container'>
+      <HeaderFooter>
+        <Outlet />
+      </HeaderFooter>
+    </div>
   );
 }
 

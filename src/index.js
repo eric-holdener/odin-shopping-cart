@@ -8,6 +8,7 @@ import Homepage from './components/Homepage';
 import Product from './components/Product';
 import ProductDetails from './components/ProductDetails';
 import ShoppingCart from './components/ShoppingCart';
+import Category from './components/Category';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +18,9 @@ root.render(
         <Route path="/" element={<App />}>
           <Route index element={<Homepage />}/>
           <Route path="products" element={<Product />}>
-            <Route path=":productId" element={<ProductDetails />}/>
+            <Route path=":category" element={<Category />}>
+              <Route path=":productId" element={<ProductDetails />}/>
+            </Route>
           </Route>
           <Route path="cart" element={<ShoppingCart />}/>
         </Route>
