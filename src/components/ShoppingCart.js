@@ -1,5 +1,7 @@
 export default function ShoppingCart() {
   return (
-    <p>Shopping Cart</p>
+    <>
+      <p>Cart</p>
+    </>
   )
 }

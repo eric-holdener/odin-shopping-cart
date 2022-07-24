@@ -1,7 +1,7 @@
 import CategoryCard from "./CategoryCard"
 import { useState, useEffect } from "react";
 
-export default function Homepage() {
+export default function Homepage(props) {
   const [categories, setCategories] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -10,7 +10,6 @@ export default function Homepage() {
           .then(res => res.json())
           .then(data => {
             setCategories(data);
-            console.log(data);
             setIsLoading(false);
           });
   }, [])

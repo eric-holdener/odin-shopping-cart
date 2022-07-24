@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Product from "./Product";
+import { useLocation } from "react-router-dom";
 
-export default function Category() {
+export default function Category(props) {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  let params = useParams();
+  const params = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/category/${params.category}`)
@@ -23,6 +25,7 @@ export default function Category() {
     <>
       {!isLoading ? (
         <div className="productsContainer">
+          {console.log(location)}
           {data.map((product) => <Product product={product} key={product.id}/>)}
         </div>
       ) : (
