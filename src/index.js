@@ -22,7 +22,6 @@ root.render(
               <Route path=":productId" element={<ProductDetails />}/>
             </Route>
           </Route>
-          <Route path="cart" element={<ShoppingCart />}/>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -7,7 +7,7 @@ export default function Product(props) {
 
   useEffect(() => {
     fetchData().then(product => setData(product))
-  }, [])
+  }, []);
 
   async function fetchData() {
     const product = await props.product;
@@ -19,6 +19,16 @@ export default function Product(props) {
   function handleChange(event) {
     const value = event.replace(/\+|-/ig, '');
     setQuantity(value);
+  }
+
+  function addItemsToCart() {
+    for(let i=0; i<quantity; i++) {
+      props.addToCart({
+        itemId: data.id,
+        name: data.title,
+        price: data.price
+      })
+    }
   }
 
   return (
@@ -35,7 +45,7 @@ export default function Product(props) {
             <div>
               <input type="text" pattern="[0-9]*" value={quantity} onChange={(e) => handleChange(e.target.value)}/>
               <button onClick={() => {
-                // props.setCart({...props.cart, [data.id]: quantity})
+                addItemsToCart()
                 }}>Add to Cart</button>
             </div>
           </div>

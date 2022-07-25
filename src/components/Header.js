@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import ShoppingCart from "./ShoppingCart" 
 
 export default function Header(props) {
   return(
@@ -8,7 +9,7 @@ export default function Header(props) {
       </div>
       <div className="headerSub">
         <Link to={"/"} className="headerLinks">User</Link>
-        <Link to={"/cart"} className="headerLinks">Cart</Link>
+        <ShoppingCart className="headerLinks"/>
       </div>
     </div>
   )
