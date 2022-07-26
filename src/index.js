@@ -10,6 +10,7 @@ import ProductDetails from './components/ProductDetails';
 import ShoppingCart from './components/ShoppingCart';
 import Category from './components/Category';
 import NotFound from './components/NotFound';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
