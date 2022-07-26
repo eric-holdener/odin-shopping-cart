@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import ShoppingCart from "./ShoppingCart" 
+import ShoppingCart from "./ShoppingCart"
 
 export default function Header(props) {
   return(

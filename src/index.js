@@ -9,6 +9,7 @@ import Product from './components/Product';
 import ProductDetails from './components/ProductDetails';
 import ShoppingCart from './components/ShoppingCart';
 import Category from './components/Category';
+import NotFound from './components/NotFound';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
             <Route path=":category" element={<Category />} />
           </Route>
           <Route path="product/:productId" element={<ProductDetails />} />
+          <Route path="*" element={<NotFound/>} />
         </Route>
       </Routes>
     </BrowserRouter>
