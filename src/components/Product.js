@@ -1,40 +1,19 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function Product(props) {
-  const [data, setData] = useState();
+  const [data, setData] = useState(props.product);
   const [quantity, setQuantity] = useState(1);
-
-  useEffect(() => {
-    fetchData().then(product => setData(product))
-  }, []);
-
-  async function fetchData() {
-    const product = await props.product;
-    const result = await fetch(`https://fakestoreapi.com/products/${product.id}`);
-    const json = await result.json();
-    return json
-  }
 
   function handleChange(event) {
     const value = event.replace(/\+|-/ig, '');
     setQuantity(value);
   }
 
-  function addItemsToCart() {
-    for(let i=0; i<quantity; i++) {
-      props.addToCart({
-        itemId: data.id,
-        name: data.title,
-        price: data.price
-      })
-    }
-  }
-
   return (
     <>
       {data ? (
-        <div className="productCard">
+        <Link to={`/product/${props.product.id}`} className="productCard" state={{data: data}}>
           <div className="productCardLeft">
             <img src={data.image} className="productImage"></img>
           </div>
@@ -45,11 +24,11 @@ export default function Product(props) {
             <div>
               <input type="text" pattern="[0-9]*" value={quantity} onChange={(e) => handleChange(e.target.value)}/>
               <button onClick={() => {
-                addItemsToCart()
+                  // do something
                 }}>Add to Cart</button>
             </div>
           </div>
-        </div>
+        </Link>
       ) : (
         <></>
       )}
