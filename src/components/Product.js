@@ -15,10 +15,8 @@ export default function Product(props) {
   function addProductToCart() {
     if (data.id in cart) {
       cart[data.id].quantity += 1
-      console.log(cart)
     } else {
       cart[data.id] = {price: data.price, name: data.title, quantity: 1}
-      console.log(cart)
     }
   }
 

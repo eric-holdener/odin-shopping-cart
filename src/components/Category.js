@@ -22,12 +22,9 @@ export default function Category(props) {
   return (
     <>
       {!isLoading ? (
-        <>
-        <>{console.log(data)}</>
         <div className="productsContainer">
           {data.map((product) => <Product product={product} key={product.id} category={params.category}/>)}
         </div>
-        </>
       ) : (
         <><p>Loading...</p></>
       )}
