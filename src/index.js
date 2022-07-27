@@ -4,29 +4,32 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Homepage from './components/Homepage';
-import Product from './components/Product';
-import ProductDetails from './components/ProductDetails';
-import ShoppingCart from './components/ShoppingCart';
-import Category from './components/Category';
-import NotFound from './components/NotFound';
+import Homepage from './components/Defaults/Homepage';
+import Product from './components/Products/Product';
+import ProductDetails from './components/Products/ProductDetails';
+import Category from './components/Category/Category';
+import NotFound from './components/Defaults/NotFound';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Provider } from 'react-redux';
+import Store from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Homepage />}/>
-          <Route path="products" element={<Product />}>
-            <Route path=":category" element={<Category />} />
+    <Provider store={Store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Homepage />}/>
+            <Route path="products" element={<Product />}>
+              <Route path=":category" element={<Category />} />
+            </Route>
+            <Route path="product/:productId" element={<ProductDetails />} />
+            <Route path="*" element={<NotFound/>} />
           </Route>
-          <Route path="product/:productId" element={<ProductDetails />} />
-          <Route path="*" element={<NotFound/>} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

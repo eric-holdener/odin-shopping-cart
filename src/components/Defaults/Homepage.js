@@ -1,4 +1,4 @@
-import CategoryCard from "./CategoryCard"
+import CategoryCard from "../Category/CategoryCard"
 import { useState, useEffect } from "react";
 
 export default function Homepage(props) {

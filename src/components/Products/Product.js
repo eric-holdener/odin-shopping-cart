@@ -1,23 +1,17 @@
 import { Link, Outlet } from "react-router-dom";
-import { useState, useContext } from "react";
-import CartContext from "../context/cart-context";
+import { useState, useContext, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/cart-slice";
 
 export default function Product(props) {
   const [data, setData] = useState(props.product);
   const [quantity, setQuantity] = useState(1);
-  const cart = useContext(CartContext);
+
+  const dispatch = useDispatch();
 
   function handleChange(event) {
     const value = event.replace(/\+|-/ig, '');
     setQuantity(value);
-  }
-
-  function addProductToCart() {
-    if (data.id in cart) {
-      cart[data.id].quantity += 1
-    } else {
-      cart[data.id] = {price: data.price, name: data.title, quantity: 1}
-    }
   }
 
   return (
@@ -38,7 +32,7 @@ export default function Product(props) {
           <div>
             <input type="text" pattern="[0-9]*" value={quantity} onChange={(e) => handleChange(e.target.value)}/>
             <button onClick={() => {
-                addProductToCart()
+                dispatch(addToCart([data, quantity]))
               }}>Add to Cart</button>
           </div>
         </>

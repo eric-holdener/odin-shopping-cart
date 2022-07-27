@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Product from "./Product";
+import Product from "../Products/Product";
 // import { NotificationManager, NotificationContainer } from 'react-notifications';
 
 export default function Category(props) {

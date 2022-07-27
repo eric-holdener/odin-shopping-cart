@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import ShoppingCart from "./ShoppingCart"
+import ShoppingCart from "../Cart/ShoppingCart"
 
 export default function Header(props) {
   return(
