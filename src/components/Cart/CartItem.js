@@ -1,6 +1,6 @@
 import { Dropdown } from "react-bootstrap"
 import { useDispatch } from "react-redux"
-import { clear, decrement, increment } from "../../redux/cart-slice";
+import { clear, decrement, deleteFromCart, increment } from "../../redux/cart-slice";
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ export default function CartItem(props) {
             <div>
               <button onClick={() => dispatch(increment(props.item.id))}>+1</button>
               <button onClick={() => dispatch(decrement(props.item.id))}>-1</button>
+              <button onClick={() => dispatch(deleteFromCart(props.item.id))}>X</button>
             </div>
           </div>
         </div>
