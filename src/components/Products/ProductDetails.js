@@ -7,12 +7,19 @@ export default function ProductDetails() {
   const [data, setData] = useState(null);
   const params = useParams();
   const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${params.productId}`)
       .then(res => res.json())
       .then(json => setData(json))
   }, [])
+
+  function handleChange(event) {
+    const value = event.replace(/\+|-/ig, '');
+    setQuantity(value);
+  }
+
 
   return(
     <div>
@@ -26,8 +33,9 @@ export default function ProductDetails() {
             <p>{data.description}</p>
           </div>   
           <div>
+          <input type="text" pattern="[0-9]*" value={quantity} onChange={(e) => handleChange(e.target.value)}/>
             <button onClick={() => {
-                  dispatch(addToCart([data, 1]))
+                  dispatch(addToCart([data, quantity]))
                 }}>Add to Cart
             </button>
           </div>     
