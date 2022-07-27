@@ -2,6 +2,8 @@ import CartItem from "./CartItem";
 import { Dropdown } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { clear } from "../../redux/cart-slice";
+import { Link } from "react-router-dom";
 
 export default function ShoppingCart() {
   const dispatch = useDispatch();
@@ -14,9 +16,22 @@ export default function ShoppingCart() {
             Cart
           </Dropdown.Toggle>
           <Dropdown.Menu className="dropdownZIndex">
-            {cart && cart.map((product) => {
-              return <CartItem item={product} key={product.id}/>
-            })}
+            {cart.length ? (
+              <>
+                {cart && cart.map((product) => {
+                  return <CartItem item={product} key={product.id}/>
+                })}
+                <Dropdown.Item>
+                  <button onClick={() => dispatch(clear())}>Clear Cart</button>
+                </Dropdown.Item>
+                <Link to={`/checkout`} ><button>Checkout</button></Link>
+              </>
+            ): (
+              <Dropdown.Item>
+                <p>Your cart is empty</p>
+              </Dropdown.Item>
+            )}
+
           </Dropdown.Menu>
         </Dropdown> 
     </div>

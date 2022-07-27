@@ -48,11 +48,11 @@ const cartSlice = createSlice({
         }
         return item;
       })
-    }
+    },
   }
 })
 
-export const { addToCart, increament, decrement, clear } = cartSlice.actions;
+export const { addToCart, increment, decrement, clear } = cartSlice.actions;
 const cartReducer = cartSlice.reducer;
 
 export default cartReducer;

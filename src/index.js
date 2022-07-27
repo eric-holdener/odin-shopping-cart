@@ -12,6 +12,7 @@ import NotFound from './components/Defaults/NotFound';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import Store from './redux/store';
+import Checkout from './components/Cart/Checkout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,6 +26,7 @@ root.render(
               <Route path=":category" element={<Category />} />
             </Route>
             <Route path="product/:productId" element={<ProductDetails />} />
+            <Route path="checkout" element={<Checkout />} />
             <Route path="*" element={<NotFound/>} />
           </Route>
         </Routes>
