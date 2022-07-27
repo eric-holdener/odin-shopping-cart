@@ -21,10 +21,12 @@ export default function ShoppingCart() {
                 {cart && cart.map((product) => {
                   return <CartItem item={product} key={product.id}/>
                 })}
-                <Dropdown.Item>
-                  <button onClick={() => dispatch(clear())}>Clear Cart</button>
-                </Dropdown.Item>
-                <Link to={`/checkout`} ><button>Checkout</button></Link>
+                <div className="cartButtons">
+                  <Dropdown.Item>
+                    <button onClick={() => dispatch(clear())}>Clear Cart</button>
+                  </Dropdown.Item>
+                  <Link to={`/checkout`} ><button>Checkout</button></Link>
+                </div>
               </>
             ): (
               <Dropdown.Item>
