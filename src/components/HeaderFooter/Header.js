@@ -12,7 +12,7 @@ const { loggedInUser } = useContext(UserContext);
       </div>
       <div className="headerSub">
         {loggedInUser ? (
-          <NavLink to={"/"} className="headerLinksUser">User</NavLink>
+          <NavLink to={"/user"} className="headerLinksUser">User</NavLink>
         ) : (
           <NavLink to={"/login"} className="headerLinksUser">Login</NavLink>
         )}

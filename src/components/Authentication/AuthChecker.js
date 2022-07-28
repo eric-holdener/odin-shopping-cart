@@ -6,8 +6,8 @@ export default function AuthChecker(props) {
   const { loggedInUser } = useContext(UserContext);
   if (!loggedInUser) {
     return (
-      <p>You must be logged in to access this page.</p>
-    )
+      <Navigate to="/login"/>
+    );
   } else {
     return props.children;
   }

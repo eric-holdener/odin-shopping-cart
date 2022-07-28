@@ -15,6 +15,12 @@ import Store from './redux/store';
 import Checkout from './components/Cart/Checkout';
 import Login from './components/User/Login';
 import { UserProvider } from './contexts/UserContext';
+import AuthChecker from './components/Authentication/AuthChecker';
+import UserDetails from './components/User/UserDetails';
+import UserOrders from './components/User/UserOrders'
+import OrderSearch from './components/Orders/OrderSearch';
+import Order from './components/Orders/Order'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -30,8 +36,12 @@ root.render(
               </Route>
               <Route path="product/:productId" element={<ProductDetails />} />
               <Route path="checkout" element={<Checkout />} />
-              <Route path="*" element={<NotFound/>} />
               <Route path="login" element={<Login/>} />
+              <Route path="user" element={<AuthChecker><UserDetails/></AuthChecker>} />
+              <Route path="user/orders" element={<AuthChecker><UserOrders/></AuthChecker>} />
+              <Route path="orders" element={<OrderSearch/>} />
+              <Route path="orders/:orderId" element={<Order/>} />
+              <Route path="*" element={<NotFound/>} />
             </Route>
           </Routes>
         </BrowserRouter>
