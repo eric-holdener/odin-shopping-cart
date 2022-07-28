@@ -1,6 +1,6 @@
 
 import { useDispatch } from "react-redux"
-import {  decrement, increment } from "../../redux/cart-slice";
+import {  decrement, increment, deleteFromCart } from "../../redux/cart-slice";
 
 export default function CheckoutItem(props) {
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ export default function CheckoutItem(props) {
             <div>
               <button onClick={() => dispatch(increment(props.item.id))}>+1</button>
               <button onClick={() => dispatch(decrement(props.item.id))}>-1</button>
+              <button onClick={() => dispatch(deleteFromCart(props.item.id))}>X</button>
             </div>
           </div>
         </div>
