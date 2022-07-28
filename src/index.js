@@ -13,24 +13,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import Store from './redux/store';
 import Checkout from './components/Cart/Checkout';
+import Login from './components/User/Login';
+import { UserProvider } from './contexts/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={Store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<Homepage />}/>
-            <Route path="products" element={<Product />}>
-              <Route path=":category" element={<Category />} />
+      <UserProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<Homepage />}/>
+              <Route path="products" element={<Product />}>
+                <Route path=":category" element={<Category />} />
+              </Route>
+              <Route path="product/:productId" element={<ProductDetails />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="*" element={<NotFound/>} />
+              <Route path="login" element={<Login/>} />
             </Route>
-            <Route path="product/:productId" element={<ProductDetails />} />
-            <Route path="checkout" element={<Checkout />} />
-            <Route path="*" element={<NotFound/>} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </UserProvider>
     </Provider>
   </React.StrictMode>
 );
